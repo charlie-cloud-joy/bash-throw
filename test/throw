@@ -1,0 +1,11 @@
+#!/bin/bash
+# Test the newly created throw script with error-structure : 1666702624
+function throwTest() {
+  status="$1"
+  (
+    [[ "$status" -ne 100 ]] && exit 1
+    echo -e ' \033[0;33mContinue Script\033[0m'
+  ) || (
+    . throw 3 'input must equal 100'
+  )
+}

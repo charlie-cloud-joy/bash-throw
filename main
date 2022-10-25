@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Store the current path
+prePath=$PATH
+# Add ./src to the path
+PATH+=":$(realpath ./src)"
+# Load the test-function
+. test/throw
+
+# Display Excercise
+echo -e '`throwTest 100` \033[0;36m# correct amount\033[0m'
+throwTest 100
+echo -e '`throwTest 1` \033[0;36m# invalid value\033[0m'
+throwTest 1
+
+export PATH=$prePath
